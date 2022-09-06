@@ -134,6 +134,9 @@ h1{
     height: 2em;
     width: 2em;
 }
+.complete-btn:hover , .trash-btn:hover{
+    cursor: pointer;
+}
 
 .fa-trash, .fa-check{
     pointer-events: none;
