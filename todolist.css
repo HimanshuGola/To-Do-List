@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    /* font-size: 16px; */
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: #9CECFB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h1{
+    font-size: clamp(1.9rem, 1rem + 5vw ,3.5rem);
+    color: white;
+    text-shadow: 1px 1px 6px rgb(59, 43, 59);
+    padding: 0.5rem 1rem;
+    margin: clamp(0.5rem, 0.1rem + 1vw , 1.5rem) auto;
+    text-align: center;
+}
+
+#form-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-task{
+    height: clamp(1.5rem, 0.1rem + 10vw , 2.5rem);
+    width: clamp(16.5em, 0.1rem + 40vw , 25rem);
+    font-size: max(0.85rem, 1.8vw);
+    margin-block: min(1em, 12px);
+}
+
+#add-btn{
+    height: clamp(1.75rem, 0.35rem + 10vw , 2.75rem);
+    width: clamp(1.75rem, 0.35rem + 10vw , 2.75rem);
+    margin-inline: clamp(0em, 0.1rem + 0.5vw, 0.5em);
+    background-color: blue;
+    border: none;
+}
+#add-btn:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+#add-btn i{
+    font-size: clamp(0.8rem, 0.1rem + 8vw , 2rem);
+    color: white;
+}
+
+#add-btn:hover i{
+    cursor: pointer;
+    color: blue;
+    background-color: white;
+}
+
+#filter-tasks{
+    height: clamp(1.75rem, 0.35rem + 10vw , 2.75rem);
+    color: white;
+    padding: 0.5rem;
+    background-color: blue;
+    border: none;
+}
+
+#filter-tasks:hover{
+    cursor: pointer;
+    color: blue;
+    background-color: white;
+}
+
+#main-container{
+    /* div that contains ul */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-list{
+    /* ul that contains all task divs */
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 42%;
+
+}
+
+.task-container{
+    /* Div that contains task, check button and delete button */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    font-size: clamp(1.2rem, 0.01rem + 1.5vw , 1.5rem);
+    height: 2em;
+    margin-block-start: 0.8em;
+    transition: all .5s ease;
+}
+
+.task{
+    /* li that contains main task */
+    flex: 1;
+    padding-inline-start: 0.5em;
+    padding-inline-end: 0.75em;
+    font-size: clamp(0.85rem, 0.01rem + 1.5vw , 1.2rem);
+    overflow: auto;
+}
+
+.task-container button{
+    border: none;
+}
+
+.complete-btn{
+    background-color: rgb(54, 245, 54);
+    color: white;
+    font-size: clamp(1.2rem, 0.01rem + 1.5vw , 1.5rem);
+    height: 2em;
+    width: 2em;
+}
+
+.trash-btn{
+    background: #ff6f47;
+    color: white;
+    font-size: clamp(1.2rem, 0.01rem + 1.5vw , 1.5rem);
+    height: 2em;
+    width: 2em;
+}
+
+.fa-trash, .fa-check{
+    pointer-events: none;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+@media (max-width: 450px){
+    #main-list{
+        width: calc(0.1rem + 85vw);
+    }
+}
+
+@media (max-width: 840px) and (min-width:451px){
+    #main-list{
+        width: calc(0.1rem + 60vw);
+    }
+}
