@@ -36,6 +36,8 @@ h1{
     width: clamp(16.5em, 0.1rem + 40vw , 25rem);
     font-size: max(0.85rem, 1.8vw);
     margin-block: min(1em, 12px);
+    background-color: white;
+    border-color: blue;
 }
 
 #add-btn{
@@ -89,9 +91,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 42%;
-
-}
+    min-width: 40%;}
 
 .task-container{
     /* Div that contains task, check button and delete button */

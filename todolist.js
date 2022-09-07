@@ -71,18 +71,18 @@ function filterTask(e){
     myTasks.forEach(myTask =>{
         switch (filterValue){
             case "all":
-                myTask.style.display = "block";
+                myTask.style.display = "flex";
                 break
             case "completed":
                 if (myTask.classList.contains("completed")){
-                    myTask.style.display = "block";
+                    myTask.style.display = "flex";
                 }else{
                     myTask.style.display = "none";
                 }
                 break
             case "incomplete":
                 if (!myTask.classList.contains("completed")){
-                    myTask.style.display = "block";
+                    myTask.style.display = "flex";
                 }else{
                     myTask.style.display = "none";
                 }
