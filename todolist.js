@@ -8,7 +8,7 @@ const filter = document.getElementById("filter-tasks");
 // Event Listeners
 document.addEventListener("DOMContentLoaded", getTasksStorage);
 addBtn.addEventListener("click", addTask);
-filter.addEventListener("click", filterTask);
+filter.addEventListener("change", filterTask);
 
 // Funtions
 // Create Task Divs
