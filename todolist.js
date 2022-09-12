@@ -12,11 +12,12 @@ filter.addEventListener("change", filterTask);
 
 // Funtions
 // Create Task Divs
-function createTaskDivs(taskValue){
+function createTaskDivs(taskValue, taskClass="incomplete"){
     console.log("you are in createTaskDivs");
     // Creating a new container with class task-container for a new task
     let newTaskCont = document.createElement("div");
     newTaskCont.classList.add("task-container");
+    newTaskCont.classList.add(taskClass);
     // Creating an li element with class task inside th above div element and assigning it value from input tag
     let newTask = document.createElement("li");
     newTask.classList.add("task");
@@ -61,7 +62,18 @@ function deleteTask(e){
 // Function to check the tasks as completed
 function checkComplete(e){
     let item = e.target;
+    let tasks = JSON.parse(localStorage.getItem("tasks"));;
     item.parentElement.classList.toggle("completed");
+    for (let task of tasks){
+        if((item.previousElementSibling.innerHTML === task["task"])&&(task["status"] === "incomplete")){
+            task["status"] = "completed";
+        }
+        else if((item.previousElementSibling.innerHTML === task["task"])&&(task["status"] === "completed")){
+            task["status"] = "incomplete";
+        }
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
 }
 
 // Function to filter tasks
@@ -101,20 +113,39 @@ function saveTasksStorage(task){
     else{
         tasks = JSON.parse(localStorage.getItem("tasks"));
     }
-    tasks.push(task);
+    // tasks.push(task);
+    // New Method
+    let myDivs = taskList.children;
+    Array.from(myDivs).forEach(myDiv =>{
+        // console.log(myDiv.children[0].innerHTML);
+        if(myDiv.children[0].innerHTML === task){
+            if(myDiv.classList.contains("completed")){
+                tasks.push({"task":task, "status": "completed"});
+            }
+            else{
+                tasks.push({"task":task, "status": "incomplete"});
+            }
+        }
+    })
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 // Function to delete tasks in localStorage
 function removeTasksStorage(taskDiv){
     let tasks;
+    let copy = [];
     if(localStorage.getItem("tasks") === null){
         tasks = [];
     }else{
         tasks = JSON.parse(localStorage.getItem("tasks"));
     }
     let task = taskDiv.childNodes[0].innerText;
-    tasks.splice(tasks.indexOf(task), 1);
+    Array.from(tasks).forEach(myTask =>{
+        if (myTask["task"] !== task){
+            copy.push(myTask);
+        }
+    })
+    tasks = copy;
     localStorage.setItem("tasks",JSON.stringify(tasks));
 }
 
@@ -128,6 +159,6 @@ function getTasksStorage(){
         tasks = JSON.parse(localStorage.getItem("tasks"));
     }
     tasks.forEach(task =>{
-        createTaskDivs(task);
+        createTaskDivs(task["task"],task["status"]);
     })
 }
